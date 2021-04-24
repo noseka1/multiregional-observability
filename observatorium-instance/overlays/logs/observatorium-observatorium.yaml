@@ -1,0 +1,24 @@
+apiVersion: core.observatorium.io/v1alpha1
+kind: Observatorium
+metadata:
+  name: observatorium
+spec:
+  loki:
+    image: $(image_loki)
+    replicas:
+      compactor: 1
+      distributor: 1
+      ingester: 1
+      querier: 1
+      query_frontend: 1
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 250Mi
+  objectStorageConfig:
+    loki:
+      endpointKey: endpoint
+      secretName: loki-object-storage

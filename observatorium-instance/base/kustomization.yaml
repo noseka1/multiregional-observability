@@ -47,6 +47,9 @@ vars:
 - name: image_thanos_receive_controller
   objref: { kind: ConfigMap, apiVersion: v1, name: image-manifest }
   fieldref: { fieldpath: data.thanos_receive_controller }
+- name: image_loki
+  objref: { kind: ConfigMap, apiVersion: v1, name: image-manifest }
+  fieldref: { fieldpath: data.loki }
 
 configurations:
 - kustomizeconfig.yaml

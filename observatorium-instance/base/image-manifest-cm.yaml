@@ -12,3 +12,4 @@ data:
   prometheus-config-reloader: registry.redhat.io/openshift4/ose-configmap-reloader:v4.7.0-202103270130.p0
   thanos: quay.io/thanos/thanos:main-2021-04-09-e3c3fee1
   thanos_receive_controller: quay.io/observatorium/thanos-receive-controller:master-2021-03-26-7770963
+  loki: docker.io/grafana/loki:2.1.0

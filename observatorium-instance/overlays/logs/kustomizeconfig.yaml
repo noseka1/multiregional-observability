@@ -1,0 +1,3 @@
+varReference:
+- kind: Observatorium
+  path: spec/loki/image
