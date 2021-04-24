@@ -7,5 +7,8 @@ patchesStrategicMerge:
 bases:
 - ../../base
 
+resources:
+- loki-object-storage-secret.yaml
+
 configurations:
 - kustomizeconfig.yaml
