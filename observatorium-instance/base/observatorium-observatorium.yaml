@@ -7,12 +7,18 @@ spec:
     image: $(image_observatorium)
     rbac:
       roleBindings:
-      - name: read-only-metrics
+      - name: read-all
         roles:
-        - read-only-metrics
+        - read-all
         subjects:
         - kind: group
           name: grafanas
+      - name: write-only-logs
+        roles:
+        - write-only-logs
+        subjects:
+        - kind: group
+          name: promtails
       - name: write-only-metrics
         roles:
         - write-only-metrics
@@ -20,11 +26,19 @@ spec:
         - kind: group
           name: prometheuses
       roles:
-      - name: read-only-metrics
+      - name: read-all
         permissions:
         - read
         resources:
+        - logs
         - metrics
+        tenants:
+        - default
+      - name: write-only-logs
+        permissions:
+        - write
+        resources:
+        - logs
         tenants:
         - default
       - name: write-only-metrics
