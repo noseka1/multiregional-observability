@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: observatorium
+
+resources:
+- promtail-clusterrolebinding.yaml
+- promtail-clusterrole.yaml
+- promtail-ds.yaml
+- promtail-sa.yaml
+
+configMapGenerator:
+- files:
+  - promtail.yaml=conf/promtail.yaml
+  name: promtail
+
+vars:
+- fieldref:
+    fieldPath: metadata.namespace
+  name: NAMESPACE
+  objref:
+    apiVersion: apps/v1
+    kind: DaemonSet
+    name: promtail
+
+configurations:
+- kustomizeconfig.yaml
