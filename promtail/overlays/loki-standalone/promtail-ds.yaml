@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - args:
-        - -client.url=http://loki.loki.svc.cluster.local:3100/api/prom/push
         - -config.file=/etc/promtail/promtail.yaml
+        - -client.url=http://loki.loki.svc.cluster.local:3100/api/prom/push
         - -client.external-labels=hostname=$(HOSTNAME)
         name: promtail
