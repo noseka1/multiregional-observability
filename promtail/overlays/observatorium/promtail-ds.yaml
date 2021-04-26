@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: promtail
+spec:
+  template:
+    spec:
+      containers:
+      - args:
+        - -config.file=/etc/promtail/promtail.yaml
+        - -config.expand-env=true
+        name: promtail
+        volumeMounts:
+        - name: promtail-certs
+          mountPath: /etc/promtail/certs
+          readOnly: true
+      volumes:
+      - name: promtail-certs
+        secret:
+          secretName: promtail-certs

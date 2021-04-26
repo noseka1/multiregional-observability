@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+configMapGenerator:
+- files:
+  - promtail.yaml=conf/promtail.yaml
+  name: promtail
+  options:
+    disableNameSuffixHash: true
+
+secretGenerator:
+- files:
+  # REPLACE_ME
+  - ca.crt=conf/observatorium-api.ca.crt.pem
+  - tls.crt=conf/promtail.crt.pem
+  - tls.key=conf/promtail.key.pem
+  name: promtail-certs
+  options:
+    disableNameSuffixHash: true
+
+patchesStrategicMerge:
+- promtail-ds.yaml
+
+bases:
+- ../../base
