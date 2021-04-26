@@ -16,6 +16,7 @@ spec:
       - args:
         - -client.url=http://loki.loki.svc.cluster.local:3100/api/prom/push
         - -config.file=/etc/promtail/promtail.yaml
+        - -client.external-labels=hostname=$(HOSTNAME)
         env:
         - name: HOSTNAME
           valueFrom:

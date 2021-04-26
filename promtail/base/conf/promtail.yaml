@@ -11,8 +11,6 @@ scrape_configs:
   relabel_configs:
   - source_labels: ['__journal__systemd_unit']
     target_label: 'unit'
-  - source_labels: ['__journal__hostname']
-    target_label: 'hostname'
 # Scrape API audit logs *-apiserver and system audit logs from /var/log/audit/audit.log
 - job_name: audit
   static_configs:
