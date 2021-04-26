@@ -12,6 +12,22 @@ scrape_configs:
     target_label: 'unit'
   - source_labels: ['__journal__hostname']
     target_label: 'hostname'
+# Audit logs
+- job_name: audit
+  static_configs:
+  - labels:
+      job: audit/kube-apiserver
+      audit: kube-apiserver
+      __path__: /var/log/kube-apiserver/audit.log
+  - labels:
+      job: audit/openshift-apiserver
+      audit: openshift-apiserver
+      __path__: /var/log/openshift-apiserver/audit.log
+  - labels:
+      job: audit/oauth-apiserver
+      audit: oauth-apiserver
+      __path__: /var/log/oauth-apiserver/audit.log
+# Based on https://github.com/grafana/loki/blob/main/tools/promtail.sh
 - pipeline_stages:
   - docker:
   job_name: kubernetes-pods-name
@@ -53,7 +69,6 @@ scrape_configs:
     - __meta_kubernetes_pod_uid
     - __meta_kubernetes_pod_container_name
     target_label: __path__
-# Based on https://github.com/grafana/loki/blob/main/tools/promtail.sh
 - pipeline_stages:
   - docker:
   job_name: kubernetes-pods-app
