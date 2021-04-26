@@ -9,11 +9,6 @@ resources:
 - promtail-ds.yaml
 - promtail-sa.yaml
 
-configMapGenerator:
-- files:
-  - promtail.yaml=conf/promtail.yaml
-  name: promtail
-
 vars:
 - fieldref:
     fieldPath: metadata.namespace
