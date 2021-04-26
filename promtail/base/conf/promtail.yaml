@@ -1,4 +1,17 @@
 scrape_configs:
+# Based on https://hub.kubeapps.com/charts/loki/promtail
+- job_name: journal
+  journal:
+    json: false
+    max_age: 12h
+    path: /var/log/journal
+    labels:
+      job: systemd-journal
+  relabel_configs:
+  - source_labels: ['__journal__systemd_unit']
+    target_label: 'unit'
+  - source_labels: ['__journal__hostname']
+    target_label: 'hostname'
 - pipeline_stages:
   - docker:
   job_name: kubernetes-pods-name
@@ -40,6 +53,7 @@ scrape_configs:
     - __meta_kubernetes_pod_uid
     - __meta_kubernetes_pod_container_name
     target_label: __path__
+# Based on https://github.com/grafana/loki/blob/main/tools/promtail.sh
 - pipeline_stages:
   - docker:
   job_name: kubernetes-pods-app
