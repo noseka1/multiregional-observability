@@ -1,4 +1,5 @@
 scrape_configs:
+# Scrape systemd-journald logs
 # Based on https://hub.kubeapps.com/charts/loki/promtail
 - job_name: journal
   journal:
@@ -12,7 +13,7 @@ scrape_configs:
     target_label: 'unit'
   - source_labels: ['__journal__hostname']
     target_label: 'hostname'
-# Audit logs
+# Scrape API audit logs *-apiserver and system audit logs from /var/log/audit/audit.log
 - job_name: audit
   static_configs:
   - labels:
@@ -27,6 +28,11 @@ scrape_configs:
       job: audit/oauth-apiserver
       audit: oauth-apiserver
       __path__: /var/log/oauth-apiserver/audit.log
+  - labels:
+      job: audit/auditd
+      audit: auditd
+      __path__: /var/log/audit/audit.log
+# Scrape container logs
 # Based on https://github.com/grafana/loki/blob/main/tools/promtail.sh
 - pipeline_stages:
   - docker:
