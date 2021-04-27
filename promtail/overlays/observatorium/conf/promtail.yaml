@@ -2,6 +2,7 @@ clients:
 - url: https://observatorium-observatorium-api.observatorium.svc.cluster.local:8080/api/logs/v1/default/loki/api/v1/push
   external_labels:
     hostname: ${HOSTNAME}
+    cluster: mycluster
   tls_config:
     ca_file: /etc/promtail/certs/ca.crt
     cert_file: /etc/promtail/certs/tls.crt

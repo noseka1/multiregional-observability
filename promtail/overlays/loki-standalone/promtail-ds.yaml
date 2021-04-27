@@ -9,5 +9,5 @@ spec:
       - args:
         - -config.file=/etc/promtail/promtail.yaml
         - -client.url=http://loki.loki.svc.cluster.local:3100/api/prom/push
-        - -client.external-labels=hostname=$(HOSTNAME)
+        - -client.external-labels=hostname=$(HOSTNAME),cluster=mycluster
         name: promtail
