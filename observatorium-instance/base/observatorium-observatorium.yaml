@@ -59,15 +59,6 @@ spec:
         caKey: ca.crt
         secretName: tenant-default
       name: default
-      # Set rate limits to very high values (1000000 requests/second)
-      # to effectively disable rate limiting
-      rateLimits:
-      - endpoint: "/api/metrics/v1/.*"
-        limit: 1000000
-        window: 1s
-      - endpoint: "/api/logs/v1/.*"
-        limit: 1000000
-        window: 1s
     tls:
       caKey: ca.crt
       certKey: tls.crt
