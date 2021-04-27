@@ -1,0 +1,5 @@
+overrides:
+  # Set rate limits to very high values (1000 MiB/sec) to effectively disable rate limiting
+  57236109-c0e3-4b53-8700-30232dbb073d:
+    ingestion_burst_size_mb: 1000
+    ingestion_rate_mb: 1000
