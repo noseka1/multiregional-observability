@@ -34,7 +34,7 @@ $ oc apply --kustomize observatorium-operator/base
 Deploy Observatorium. Search for REPLACE_ME string and customize manifests before deploying:
 
 ```
-$ oc apply --kustomize observatorium-instance/overlays/logs
+$ kustomize build observatorium-instance/overlays/logs | oc apply --filename -
 ```
 
 Deploy Prometheus operator:
@@ -64,7 +64,7 @@ $ oc apply --kustomize grafana-instance/base
 Deploy promtail. Search for REPLACE_ME string and customize the manifests before deploying:
 
 ```
-$ kustomize build  promtail/overlays/observatorium | oc apply --filename -
+$ kustomize build promtail/overlays/observatorium | oc apply --filename -
 ```
 
 ## Further tips
