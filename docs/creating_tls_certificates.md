@@ -1,6 +1,6 @@
 # Creating TLS certificates
 
-![Diagram](scalable_monitoring_certs.svg "Diagram")
+![Diagram](multiregional_observability_certs.svg "Diagram")
 
 ## Root CA certificate
 
@@ -79,4 +79,28 @@ Create certificate:
 
 ```
 $ openssl x509 -req -in grafana-1.csr.pem -CA root.crt.pem -CAkey root.key.pem -CAcreateserial -extfile grafana-1.ext -days 3650 -out grafana-1.crt.pem
+```
+
+## Loki client certificate
+
+(Same procedure as for Prometheus)
+
+Create private key + CSR:
+
+```
+$ openssl req -new -subj "/OU=lokis/CN=loki-1" -newkey rsa:4096 -keyout loki-1.key.pem -nodes -out loki-1.csr.pem
+```
+Create TLS config file:
+
+```
+$ cat >loki-1.ext <<EOF
+subjectAltName=DNS:loki-1
+certificatePolicies=1.3.6.1.5.5.7.3.2
+EOF
+```
+
+Create certificate:
+
+```
+$ openssl x509 -req -in loki-1.csr.pem -CA root.crt.pem -CAkey root.key.pem -CAcreateserial -extfile loki-1.ext -days 3650 -out loki-1.crt.pem
 ```
