@@ -1,4 +1,4 @@
-# Multi-regional monitoring using Observatorium
+# Multi-regional observability using Observatorium
 
 ## Overview
 
