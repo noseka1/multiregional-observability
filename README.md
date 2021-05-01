@@ -2,12 +2,13 @@
 
 ## Overview
 
-This proof-of-concept (POC) deploys Observatorium + Prometheus + Grafana. See also [architecture diagrams](docs/diagrams).
+This proof-of-concept (POC) deploys Observatorium API, Thanos, and Loki components. It also deploys Prometheus, Grafana, and Promtail. See also [architecture diagrams](docs/diagrams).
 
 Components used:
 * [Observatorium](https://github.com/observatorium)
 * [Prometheus operator](https://github.com/prometheus-operator/prometheus-operator)
 * [Grafana operator](https://github.com/integr8ly/grafana-operator)
+* [Promtail](https://grafana.com/docs/loki/latest/clients/promtail/)
 
 ## Deploying
 
