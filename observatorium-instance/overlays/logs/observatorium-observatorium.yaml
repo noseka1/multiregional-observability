@@ -10,7 +10,7 @@ spec:
       distributor: 2
       ingester: 10
       querier: 10
-      query_frontend: 1
+      query_frontend: 2
     volumeClaimTemplate:
       spec:
         accessModes:
