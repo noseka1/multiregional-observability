@@ -7,7 +7,7 @@ spec:
     image: $(image_loki)
     replicas:
       compactor: 1
-      distributor: 1
+      distributor: 2
       ingester: 10
       querier: 10
       query_frontend: 1
