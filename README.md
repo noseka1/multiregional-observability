@@ -50,6 +50,12 @@ Deploy Prometheus instance. Search for REPLACE_ME string and customize the manif
 $ kustomize build prometheus-instance/base | oc apply --filename -
 ```
 
+Deploy Promtail. Search for REPLACE_ME string and customize the manifests before deploying:
+
+```
+$ kustomize build promtail/overlays/observatorium | oc apply --filename -
+```
+
 Deploy Grafana operator:
 
 ```
@@ -60,12 +66,6 @@ Deploy Grafana instance:
 
 ```
 $ oc apply --kustomize grafana-instance/base
-```
-
-Deploy promtail. Search for REPLACE_ME string and customize the manifests before deploying:
-
-```
-$ kustomize build promtail/overlays/observatorium | oc apply --filename -
 ```
 
 ## Further tips
