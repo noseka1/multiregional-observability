@@ -11,6 +11,9 @@ spec:
       ingester: 10
       querier: 10
       query_frontend: 2
+    # This doesn't seem to have any effect, see also:
+    # Observatorium.spec.loki.volumeClaimTemplate ignored?
+    # https://github.com/observatorium/operator/issues/64
     volumeClaimTemplate:
       spec:
         accessModes:
