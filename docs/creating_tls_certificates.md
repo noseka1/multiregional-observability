@@ -88,13 +88,13 @@ $ openssl x509 -req -in grafana-1.csr.pem -CA root.crt.pem -CAkey root.key.pem -
 Create private key + CSR:
 
 ```
-$ openssl req -new -subj "/OU=lokis/CN=loki-1" -newkey rsa:4096 -keyout loki-1.key.pem -nodes -out loki-1.csr.pem
+$ openssl req -new -subj "/OU=promtails/CN=promtail-1" -newkey rsa:4096 -keyout promtail-1.key.pem -nodes -out promtail-1.csr.pem
 ```
 Create TLS config file:
 
 ```
-$ cat >loki-1.ext <<EOF
-subjectAltName=DNS:loki-1
+$ cat >promtail-1.ext <<EOF
+subjectAltName=DNS:promtail-1
 certificatePolicies=1.3.6.1.5.5.7.3.2
 EOF
 ```
@@ -102,5 +102,5 @@ EOF
 Create certificate:
 
 ```
-$ openssl x509 -req -in loki-1.csr.pem -CA root.crt.pem -CAkey root.key.pem -CAcreateserial -extfile loki-1.ext -days 3650 -out loki-1.crt.pem
+$ openssl x509 -req -in promtail-1.csr.pem -CA root.crt.pem -CAkey root.key.pem -CAcreateserial -extfile promtail-1.ext -days 3650 -out promtail-1.crt.pem
 ```
