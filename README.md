@@ -62,7 +62,7 @@ Deploy Grafana operator:
 $ oc apply --kustomize grafana-operator/base
 ```
 
-Deploy Grafana instance:
+Deploy Grafana instance. Search for REPLACE_ME string and customize the manifests before deploying:
 
 ```
 $ oc apply --kustomize grafana-instance/base
