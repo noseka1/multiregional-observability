@@ -8,8 +8,5 @@ configMapGenerator:
   options:
     disableNameSuffixHash: true
 
-patchesStrategicMerge:
-- promtail-ds.yaml
-
 bases:
 - ../../base

@@ -6,10 +6,7 @@ spec:
   template:
     spec:
       containers:
-      - args:
-        - -config.file=/etc/promtail/promtail.yaml
-        - -config.expand-env=true
-        name: promtail
+      - name: promtail
         volumeMounts:
         - name: promtail-certs
           mountPath: /etc/promtail/certs

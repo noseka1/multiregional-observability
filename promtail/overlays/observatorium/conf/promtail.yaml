@@ -1,3 +1,11 @@
+# Note that these two files should be kept in sync:
+#
+# promtail/overlays/loki-standalone/conf/promtail.yaml
+# promtail/overlays/observatorium/conf/promtail.yaml
+#
+# If you are making changes to this file, make sure you make the respective changes
+# in the other file as well.
+#
 clients:
 - url: https://observatorium-observatorium-api.observatorium.svc.cluster.local:8080/api/logs/v1/default/loki/api/v1/push
   tls_config:

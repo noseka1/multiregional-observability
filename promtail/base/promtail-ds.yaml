@@ -13,7 +13,10 @@ spec:
         name: promtail
     spec:
       containers:
-      - env:
+      - args:
+        - -config.file=/etc/promtail/promtail.yaml
+        - -config.expand-env=true
+        env:
         - name: HOSTNAME
           valueFrom:
             fieldRef:
