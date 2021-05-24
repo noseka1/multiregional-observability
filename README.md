@@ -90,6 +90,10 @@ Create route for Thanos Alerts Web UI (inactive, pending, firing alerts):
 $ oc expose svc observatorium-thanos-rule --port http
 ```
 
+## Video
+
+[![How to Collect and View OpenShift Cluster Logs Using Grafana Loki](https://img.youtube.com/vi/vcymAJXsJlA/0.jpg)](http://www.youtube.com/watch?v=vcymAJXsJlA)
+
 ## Related documentation
 
 * [Observatorium Operator deployment documentation](https://github.com/observatorium/operator/blob/master/docs/deploy-operator.md)
